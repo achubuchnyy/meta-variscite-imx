@@ -13,5 +13,9 @@
 # Disable runtime power management to avoid possible deadlock
 echo "0 1" > /sys/devices/platform/soc/soc:busfreq/enable
 
-exit 0
+#modprobe rh850
 
+#wpa_supplicant -B -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf
+#iw dev wlan0 link
+#udhcpc -iwlan0
+exit 0

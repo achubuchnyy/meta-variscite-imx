@@ -12,7 +12,7 @@ readonly ABSOLUTE_DIRECTORY=`dirname ${ABSOLUTE_FILENAME}`
 readonly SCRIPT_POINT=${ABSOLUTE_DIRECTORY}
 
 readonly YOCTO_ROOT="${SCRIPT_POINT}/../../../../"
-readonly YOCTO_BUILD=${YOCTO_ROOT}/build_x11
+readonly YOCTO_BUILD=${YOCTO_ROOT}/build_fb
 readonly YOCTO_SCRIPTS_PATH=${SCRIPT_POINT}/variscite_scripts
 readonly YOCTO_IMGS_PATH=${YOCTO_BUILD}/tmp/deploy/images/${MACHINE}
 
@@ -26,7 +26,7 @@ SPARE_SIZE=4
 LOOP_MAJOR=7
 
 YOCTO_RECOVERY_ROOTFS_PATH=${YOCTO_IMGS_PATH}
-YOCTO_DEFAULT_IMAGE=fsl-image-gui
+YOCTO_DEFAULT_IMAGE=fsl-image-qt5
 YOCTO_RECOVERY_ROOTFS_BASE_IN_NAME=${YOCTO_DEFAULT_IMAGE}-${MACHINE}
 
 echo "=============================================="
