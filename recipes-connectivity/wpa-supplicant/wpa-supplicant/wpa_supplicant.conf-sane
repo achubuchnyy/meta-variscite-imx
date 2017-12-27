@@ -2,6 +2,13 @@ ctrl_interface=/var/run/wpa_supplicant
 ctrl_interface_group=0
 update_config=1
 
+
 network={
-        key_mgmt=NONE
+	ssid="ChargeSW"
+        #psk="Charge845SW12"
+        psk=a73e85e1c1d05b587fd151a9dac400bcf76f747077f71cce4d77ad2456eafa24
+        proto=RSN
+        key_mgmt=WPA-PSK
+        pairwise=CCMP
+        auth_alg=OPEN
 }

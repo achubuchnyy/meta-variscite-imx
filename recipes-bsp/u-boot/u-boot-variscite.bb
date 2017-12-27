@@ -12,8 +12,9 @@ LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a
 
 PROVIDES += "u-boot"
 SRCBRANCH = "master"
-//SRCBRANCH = "imx_v2015.04_4.1.15_1.1.0_ga_var03"
+#SRCBRANCH = "imx_v2015.04_4.1.15_1.1.0_ga_var03"
 UBOOT_SRC = "git:///home/achubuchnyy/repo/u-boot-var.git"
+#UBOOT_SRC = "https://github.com/achubuchnyy/u-boot-var.git"
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH}"
 SRCREV = "54ba7e5736d46178a9917cd90eccc6c1a8fcf4c5"
 
