@@ -6,16 +6,15 @@ require recipes-kernel/linux/linux-imx.inc
 require recipes-kernel/linux/linux-dtb.inc
 
 DEPENDS += "lzop-native bc-native"
-#LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a4263"
+
 SRCBRANCH = "master"
-#SRCBRANCH = "imx-rel_imx_4.1.15_2.0.0_ga-var01"
+
 LOCALVERSION_var-som-mx6 = "-6QP"
 LOCALVERSION_imx6ul-var-dart = "-6UL"
 LOCALVERSION_imx7-var-som = "-7Dual"
+
 SRCREV = "304a10fb203688dcd846c245547d2d4ff6b330b5"
-#SRCREV = "c117b47c3012ea58d27559554160672e47f06351"
-KERNEL_SRC ?= "git:///home/achubuchnyy/repo/linux-arrival.git"
-#KERNEL_SRC ?= "https://github.com/achubuchnyy/linux-variscite.git;"
+KERNEL_SRC ?= "git://github.com/achubuchnyy/linux-variscite.git;protocol=git"
 SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
 
 DEFAULT_PREFERENCE = "1"
