@@ -20,7 +20,7 @@
 #include <linux/can/dev.h>
 #include <linux/completion.h>
 
-#define DEBUG_RH850	1
+#define DEBUG_RH850	0
 #if DEBUG_RH850 == 1
 #define LOGDI(...) dev_info(&priv_data->spidev->dev, __VA_ARGS__)
 #define LOGNI(...) netdev_info(netdev, __VA_ARGS__)
@@ -35,7 +35,7 @@
 #define MAX_TX_BUFFERS		1
 #define XFER_BUFFER_SIZE	245
 #define RX_ASSEMBLY_BUFFER_SIZE	XFER_BUFFER_SIZE*2
-#define RH850_CLOCK	16000000
+#define RH850_CLOCK	10000000
 #define RH850_MAX_CHANNELS	4
 
 struct rh850_can {

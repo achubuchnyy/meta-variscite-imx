@@ -1,49 +1,87 @@
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
 
 # The loopback interface
-auto lo
+auto lo etho
 iface lo inet loopback
 
 # Wireless interfaces
-#auto wlan0
-#iface wlan0 inet dhcp
-#	wireless_mode managed
-#	wireless_essid any
-	wpa-driver wext
-#	wpa-conf /etc/wpa_supplicant.conf
-	wpa_supplicant -B -Dnl80211 -iwlan0 -c/etc/wpa_supplicant.conf
-	iw dev wlan0 link
-	udhcpc -iwlan0
+
+iface wlan0 inet dhcp
+
+iface ChargeStaff inet dhcp
+
+iface ChargeGuest inet dhcp
+
+iface ChargeSW inet dhcp
+
+iface d22 inet dhcp
 
 # Wired or wireless interfaces
-auto eth0
-iface eth0 inet dhcp
 
-auto eth1
-iface eth1 inet dhcp
-
-# Ethernet/RNDIS gadget (g_ether)
-# ... or on host side, usbnet and random hwaddr
-iface usb0 inet static
-        address 192.168.7.2
+iface eth0 inet static
+	address 192.168.1.1
         netmask 255.255.255.0
-        network 192.168.7.0
-        gateway 192.168.7.1
-
-# Bluetooth networking
-iface bnep0 inet dhcp
+        network 192.168.1.0
 
 # 4G moden setup
-auto  wwan0
+
 iface wwan0 inet dhcp
      pre-up for _ in $(seq 1 10); do /usr/bin/test -c /dev/cdc-wdm0 && break; /bin/sleep 1; done
      pre-up for _ in $(seq 1 10); do /usr/bin/qmicli -d /dev/cdc-wdm0 --nas-get-signal-strength && break; /bin/sleep 1; done
      pre-up /usr/bin/qmicli -d /dev/cdc-wdm0 --wds-start-network=internet --device-open-net="net-802-3|net-no-qos-header" --device-open-sync --client-no-release-cid
      pre-up udhcpc -iwwan0
-    # pre-up /usr/bin/qmicli -d /dev/cdc-wdm0 --wda-set-data-format=802-3
-    # pre-up /usr/bin/qmi-network /dev/cdc-wdm0 start
-    # pre-up dhclient -v wwan0
      post-down /usr/bin/qmi-network /dev/cdc-wdm0 stop
 
 
+
+
+auto can0
+iface can0 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
+
+
+auto can1
+iface can1 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
+
+auto can2
+iface can2 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
+
+auto can3
+iface can3 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
+
+
+auto can4
+iface can4 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
+
+auto can5
+iface can5 inet manual
+        #pre-up ip link set $IFACE type can bitrate 125000 listen-only off
+        pre-up /sbin/ip link set $IFACE type can bitrate 500000 
+	triple-sampling on
+        up /sbin/ifconfig $IFACE up
+        down /sbin/ifconfig $IFACE down
 
